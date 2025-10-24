@@ -1,3 +1,5 @@
+import ThemeToggle from "../ThemeToggle";
+
 const Navbar = () => (
   <nav className="fixed top-0 w-full bg-black shadow z-50">
     <ul className="flex justify-center gap-6 p-4 text-white">
@@ -9,6 +11,7 @@ const Navbar = () => (
       <li><a href="#projects">Projects</a></li>
       <li><a href="#blog">My Blog</a></li>
       <li><a href="#contact">Contact</a></li>
+      <ThemeToggle/>
     </ul>
   </nav>
 );
