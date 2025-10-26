@@ -56,6 +56,14 @@ const projects = [
     github: "https://github.com/Nyolmo/react-movie-explorer.git",
     tech: ["React", "TMDB API", "Vercel"],
   },
+    {
+    title: "Le'Lesan Resort",
+    description: "Le’Lesan Resort — a modern, nature-inspired single-page React website showcasing a resort’s activities, packages, and events. Designed with Tailwind CSS for full responsiveness and elegant user experience.",
+    image: "/images/resort.png",
+    link: "https://lelesan-resort.vercel.app/",
+    github: "https://github.com/Nyolmo/LLS-resort.git",
+    tech: ["React", "Framer Motion", "TailwindCSS"],
+  },
 ];
 
 export default function Projects() {

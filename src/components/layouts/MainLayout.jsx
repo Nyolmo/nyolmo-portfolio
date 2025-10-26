@@ -27,7 +27,7 @@ export default function MainLayout() {
     
 
   return (
-    <section className="relative w-full overflow-hidden bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-300">
+    <section className="relative w-full overflow-hidden bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-300 gap-6">
 
       <video
         autoPlay
@@ -52,14 +52,14 @@ export default function MainLayout() {
       </button>
 
   
-      <div className="relative z-10 px-4 lg:px-20 space-y-0"> 
+      <div className="relative z-10 px-4 lg:px-20 space-y-0 "> 
 
         
-        <section id="home" className="pt-28 lg:pt-20">
+        <section id="home" className="pt-5 lg:pt-20">
           <Homepage />
         </section>
 
-        <section id="about">
+        <section id="about" className="mt-0">
           <About />
         </section>
           
