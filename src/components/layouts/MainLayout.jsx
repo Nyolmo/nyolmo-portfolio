@@ -5,10 +5,12 @@ import Homepage from "./Homepage";
 import About from "./About";
 import Projects from "./Projects";
 import TechStack from "./TechStack";
+import Experience from "./Experience";
+import Testimonials from "./Testimonial";
 
 export default function MainLayout() {
   const [darkMode, setDarkMode] = useState(
-    () => localStorage.getItem("theme") === "dark" 
+    () => localStorage.getItem("theme") === "dark"
   );
 
   useEffect(() => {
@@ -22,13 +24,10 @@ export default function MainLayout() {
     }
   }, [darkMode]);
 
-
-
-    
-
   return (
-    <section className="relative w-full overflow-hidden bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-300 gap-6">
+    <section className="relative w-full overflow-hidden bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-300">
 
+      {/* Background Video */}
       <video
         autoPlay
         loop
@@ -40,40 +39,46 @@ export default function MainLayout() {
         Your browser does not support the video tag.
       </video>
 
-
+      {/* Overlay */}
       <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent z-0"></div>
 
-  
-  <button
+      {/* Dark/Light Toggle */}
+      <button
         onClick={() => setDarkMode(!darkMode)}
         className="fixed top-4 right-4 z-50 px-3 py-1 rounded-md bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-100 transition"
       >
         {darkMode ? "🌙 Dark" : "☀️ Light"}
       </button>
 
-  
-      <div className="relative z-10 px-4 lg:px-20 space-y-0 "> 
+      {/* Sections Wrapper */}
+      <div className="relative z-10 px-4 lg:px-20 flex flex-col gap-4 md:gap-6 lg:gap-8">
+        {/* 👆 drastically reduced spacing between sections */}
 
-        
-        <section id="home" className="pt-5 lg:pt-20">
+        <section id="home" className="py-4">
           <Homepage />
         </section>
 
-        <section id="about" className="mt-0">
+        <section id="about" className="py-4">
           <About />
         </section>
-          
 
-        <section id="tech-stack">
-          <TechStack/>
-
+        <section id="tech-stack" className="py-4">
+          <TechStack />
         </section>
 
-        <section id="projects">
+        <section id="experience" className="py-4">
+          <Experience/>
+        </section>
+
+        <section id="testimonials" className="py-4">
+          <Testimonials />
+        </section>
+
+        <section id="projects" className="py-4">
           <Projects />
         </section>
 
-        <section id="contact" className="pb-20">
+        <section id="contact" className="py-4">
           <ContactForm />
         </section>
       </div>

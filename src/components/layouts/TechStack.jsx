@@ -1,4 +1,3 @@
-
 import { motion } from "framer-motion";
 import {
   SiHtml5,
@@ -34,21 +33,48 @@ export default function TechStack() {
       id="techstack"
       className="relative min-h-screen flex flex-col items-center justify-center px-6 py-20 bg-transparent text-white"
     >
+      {/* Floating glowing icons in background */}
+      <div className="absolute inset-0 overflow-hidden -z-10">
+        {Array.from({ length: 10 }).map((_, index) => (
+          <motion.div
+            key={index}
+            className="absolute text-7xl text-amber-300/40 drop-shadow-[0_0_15px_rgba(255,193,7,0.5)]"
+            initial={{
+              x: Math.random() * window.innerWidth - window.innerWidth / 2,
+              y: Math.random() * window.innerHeight - window.innerHeight / 2,
+              opacity: 0.3,
+              scale: 0.8,
+            }}
+            animate={{
+              y: [null, Math.random() * 100 - 50],
+              x: [null, Math.random() * 100 - 50],
+              rotate: [0, 360],
+            }}
+            transition={{
+              duration: 25 + Math.random() * 15,
+              repeat: Infinity,
+              repeatType: "mirror",
+              ease: "easeInOut",
+            }}
+          >
+            <SiReact />
+          </motion.div>
+        ))}
+      </div>
 
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
         viewport={{ once: true }}
-        className="bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl shadow-xl p-10 w-full max-w-4xl text-center"
+        className="bg-white/10 dark:bg-black/30 backdrop-blur-lg border border-white/20 dark:border-gray-800 rounded-3xl shadow-xl p-10 w-full max-w-4xl text-center"
       >
         <h2 className="text-3xl sm:text-4xl font-bold text-amber-400 mb-3">
           My Tech Stack
         </h2>
         <p className="text-gray-300 mb-10 text-sm sm:text-base">
-          Tools and technologies I use to build web apps and digital experiences.
+          Tools and technologies I use to design, develop, and deploy scalable web applications.
         </p>
-
 
         <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-8 justify-center">
           {techStack.map((tech, index) => (
@@ -63,7 +89,7 @@ export default function TechStack() {
               <motion.div
                 whileHover={{ scale: 1.2, rotate: 5 }}
                 transition={{ type: "spring", stiffness: 300 }}
-                className="text-4xl sm:text-5xl text-amber-400 drop-shadow-lg group-hover:text-white transition-colors"
+                className="text-4xl sm:text-5xl text-amber-400 drop-shadow-[0_0_10px_rgba(255,193,7,0.5)] group-hover:text-white transition-colors"
               >
                 {tech.icon}
               </motion.div>
@@ -75,8 +101,7 @@ export default function TechStack() {
         </div>
       </motion.div>
 
-
-      <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_center,rgba(255,193,7,0.08)_0%,transparent_70%)]"></div>
+      <div className="absolute inset-0 -z-20 bg-[radial-gradient(circle_at_center,rgba(255,193,7,0.08)_0%,transparent_70%)]"></div>
     </section>
   );
 }

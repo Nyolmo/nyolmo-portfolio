@@ -25,7 +25,6 @@ export default function SideNav() {
     }
   };
 
-
   useEffect(() => {
     const handleScroll = () => {
       const scrollY = window.scrollY + window.innerHeight / 3;
@@ -45,51 +44,54 @@ export default function SideNav() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-
   useEffect(() => {
     const controlNavbar = () => {
       if (window.scrollY > lastScrollY && window.scrollY > 100) {
-        setShowMobileNav(false); 
+        setShowMobileNav(false);
       } else {
-        setShowMobileNav(true); 
+        setShowMobileNav(true);
       }
       setLastScrollY(window.scrollY);
     };
-
     window.addEventListener("scroll", controlNavbar);
     return () => window.removeEventListener("scroll", controlNavbar);
   }, [lastScrollY]);
 
   return (
     <>
- 
+      {/* --- DESKTOP SIDEBAR --- */}
       <motion.nav
         initial={{ opacity: 0, x: -30 }}
         animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.5 }}
-        className="hidden md:flex fixed top-1/2 left-6 transform -translate-y-1/2 z-50 flex-col gap-4 
-                   bg-white/10 dark:bg-gray-800/40 backdrop-blur-md border border-white/20 dark:border-gray-700 
-                   rounded-2xl p-3 shadow-lg"
+        transition={{ duration: 0.6 }}
+        className="hidden md:flex fixed top-1/2 left-6 -translate-y-1/2 z-50 flex-col justify-center 
+                   bg-gray-900/70 dark:bg-black/60 backdrop-blur-xl 
+                   border border-gray-700/60 rounded-3xl shadow-lg 
+                   px-5 py-6 gap-3 w-[90px] hover:w-[120px] transition-all duration-300 overflow-hidden"
       >
         {navItems.map((item) => (
           <button
             key={item.id}
             onClick={() => handleNavClick(item.id, item.href)}
-            className={`group relative flex items-center gap-2 px-3 py-2 rounded-lg text-white 
-              hover:bg-white/20 transition-all duration-200 w-full text-left ${
+            className={`group flex flex-col items-center justify-center gap-1 py-3 px-3 rounded-xl 
+              transition-all duration-300 ${
                 active === item.id
-                  ? "bg-amber-400/90 text-black shadow-lg ring-2 ring-amber-300/60 animate-pulseGlow"
-                  : ""
+                  ? "bg-amber-400/90 text-black scale-105 ring-2 ring-amber-300/60 shadow-xl"
+                  : "text-gray-300 hover:text-amber-400 hover:bg-white/10"
               }`}
           >
-            {item.icon}
-            <span className="whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 text-sm">
-              {item.label}
-            </span>
+            <motion.div
+              whileHover={{ scale: 1.2, rotate: 5 }}
+              transition={{ type: "spring", stiffness: 250 }}
+            >
+              {item.icon}
+            </motion.div>
+            <span className="text-xs font-medium">{item.label}</span>
           </button>
         ))}
       </motion.nav>
 
+      {/* --- MOBILE NAV (unchanged) --- */}
       <motion.nav
         initial={{ y: 100, opacity: 0 }}
         animate={{ y: showMobileNav ? 0 : 100, opacity: showMobileNav ? 1 : 0 }}

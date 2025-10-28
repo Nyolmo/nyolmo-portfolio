@@ -1,35 +1,39 @@
 import { motion } from "framer-motion";
 import { Typewriter } from "react-simple-typewriter";
+import { ArrowDown } from "lucide-react";
 
 export default function HomePage() {
   return (
     <section
       id="home"
-      className="min-h-screen flex items-center justify-center text-center relative z-10 px-4 lg:px-0"
+      className="min-h-screen flex flex-col items-center justify-center text-center relative z-10 px-4 lg:px-8"
     >
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
         viewport={{ once: true }}
-        className="bg-white/10 dark:bg-black/30 backdrop-blur-md border border-white/20 dark:border-gray-700 rounded-2xl px-8 py-10 shadow-lg w-full max-w-sm sm:max-w-md lg:max-w-lg"
+        className="bg-white/10 dark:bg-black/30 backdrop-blur-md border border-white/10 dark:border-gray-800 rounded-3xl p-10 sm:p-12 shadow-2xl max-w-3xl w-full relative"
       >
-       
-        <div className="w-32 h-32 sm:w-40 sm:h-40 rounded-full overflow-hidden mx-auto mb-5">
-          <img
-            src="/images/profile.jpg"
-            alt="profile"
-            className="w-full h-full object-cover shadow-2xl"
-          />
+        {/* Profile Image */}
+        <div className="relative w-60 h-60 sm:w-72 sm:h-72 mx-auto mb-8 rounded-full">
+          <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-amber-400 to-yellow-600 blur-xl opacity-30 animate-pulse"></div>
+          <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-amber-400 shadow-2xl">
+            <img
+              src="/images/profile.jpg"
+              alt="Profile"
+              className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+            />
+          </div>
         </div>
 
-    
-        <h1 className="text-3xl sm:text-4xl font-bold text-amber-400 mb-1">
+        {/* Name */}
+        <h1 className="text-5xl sm:text-6xl font-bold text-amber-400 mb-3">
           Nyolmo Rodney
         </h1>
 
-    
-        <h2 className="text-gray-200 dark:text-gray-300 text-lg sm:text-xl mb-4 h-6 sm:h-8">
+        {/* Animated Typewriter */}
+        <h2 className="text-xl sm:text-3xl text-gray-200 dark:text-gray-300 mb-6 h-8 sm:h-10">
           I'm{" "}
           <span className="text-amber-400 font-semibold">
             <Typewriter
@@ -37,25 +41,41 @@ export default function HomePage() {
                 "a Full-Stack Developer",
                 "a Designer",
                 "an API Creator",
-                "Building Scalable Websites",
-                "Building Responsive Web Apps",
+                "Building Scalable Web Apps",
+                "Building Responsive Interfaces",
               ]}
               loop={true}
               cursor
               cursorStyle="|"
-              typeSpeed={70}
-              deleteSpeed={50}
-              delaySpeed={1500}
+              typeSpeed={65}
+              deleteSpeed={45}
+              delaySpeed={1400}
             />
           </span>
         </h2>
 
+        <div className="h-[2px] w-20 bg-amber-400 mx-auto mb-6"></div>
 
-        <div className="h-[2px] w-16 bg-amber-400 mx-auto mt-2 mb-4"></div>
-
-        <p className="text-gray-300 dark:text-gray-400 text-sm sm:text-base">
-          Passionate about creating beautiful and scalable web apps using React, Django, and Tailwind CSS. Also Creating RESTFUL API using Django rest Framework
+        {/* Bio / Intro */}
+        <p className="text-gray-300 dark:text-gray-400 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto">
+          Passionate about building sleek, scalable, and user-friendly web
+          applications using modern technologies like{" "}
+          <span className="text-amber-400 font-medium">React</span>,{" "}
+          <span className="text-amber-400 font-medium">Django</span>, and{" "}
+          <span className="text-amber-400 font-medium">Tailwind CSS</span>. I
+          specialize in creating powerful RESTful APIs and crafting seamless
+          digital experiences that help businesses grow.
         </p>
+
+        {/* Call-to-Action Button */}
+        <div className="mt-10">
+          <a
+            href="#projects"
+            className="inline-flex items-center gap-2 bg-amber-400 text-gray-900 font-semibold px-6 py-3 rounded-full hover:bg-amber-300 transition-all duration-300 shadow-md"
+          >
+            View My Projects <ArrowDown size={20} />
+          </a>
+        </div>
       </motion.div>
     </section>
   );
